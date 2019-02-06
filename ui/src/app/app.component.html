@@ -1,0 +1,15 @@
+<ul id="messages">
+  <li *ngFor="let msg of prevMessages">
+    <span>{{msg.Content}}</span>
+  </li>
+  <li *ngFor="let message of messages">
+    <span *ngIf="isSystemMessage(message.Content)" [innerHTML]="isSystemMessage(message.Content)"></span>
+    <span *ngIf="!isSystemMessage(message.Content)">{{message.Content}}</span>
+  </li>
+</ul>
+<form action="">
+  <input [(ngModel)]="chatBox" [ngModelOptions]="{standalone: true}" autocomplete="off">
+  <button (click)="send()">Send</button>
+</form>
+
+<router-outlet></router-outlet>
